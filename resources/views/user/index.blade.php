@@ -23,7 +23,7 @@
         <td>{{$u -> id}}</td>
         <td>{{$u -> name}}</td>
         <td>{{$u -> password}}</td>
-        <td><a href="/user/edit/{{$u -> id}}">修改</a>|<a href="javascript:void(0)" onclick="del({{$u -> id}})">删除</a></td>
+        <td><a href="/user/edit/{{$u -> id}}">修改</a>|<a href="javascript:void(0)" onclick="del(this,{{$u -> id}})">删除</a></td>
     </tr>
     @endforeach
 </table>
@@ -31,12 +31,15 @@
 </body>
 </html>
 <script>
-    function del(id){
+    function del(obj,id){
         layer.confirm('您确定要删除吗？', {
             btn: ['确定','取消'] //按钮
         }, function(){
             $.get("/user/del/" + id,function (data) {
-
+                if(data.status == 0){
+                    $(obj).parents('tr').remove();
+                    layer.msg(data.msg,{icon:6});
+                }
             });
         }, function(){
 
