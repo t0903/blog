@@ -11,3 +11,11 @@
 |
 */
 Route::any('admin/login', 'Admin\LoginController@login');
+
+Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'isLogin'],function (){
+    Route::get('index', 'LoginController@index');
+
+    Route::get('welcome', 'LoginController@welcome');
+
+    Route::get('logout', 'LoginController@logout');
+});

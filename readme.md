@@ -6,3 +6,6 @@ php artisan make:model Model\User
 
 ### 创建控制器
 php artisan make:controller UserController
+
+### 创建中间件
+php artisan make:middleware IsLogin

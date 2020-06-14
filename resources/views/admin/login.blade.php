@@ -10,12 +10,9 @@
     <link rel="stylesheet" href="{{asset('admin/css/font.css')}}">
     <link rel="stylesheet" href="{{asset('admin/css/login.css')}}">
     <link rel="stylesheet" href="{{asset('admin/css/xadmin.css')}}">
-    <script type="text/javascript" src="{{asset('admin/js/jquery.min.js')}}"></script>
-    <script src="{{asset('admin/lib/layui/layui.js')}}" charset="utf-8"></script>
-    <!--[if lt IE 9]>
-      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
+    @include('admin.public.script')
+
 </head>
 <body class="login-bg">
     

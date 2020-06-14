@@ -46,12 +46,12 @@ class LoginController extends Controller
 
             if(!$user){
                 return redirect('admin/login')
-                    -> with('errors',new MessageBag(['用户名错误']));
+                    -> withErrors('用户名错误');
             }
 
             if($input['password'] != Crypt::decrypt($user['user_pass'])){
                 return redirect('admin/login')
-                    -> with('errors',new MessageBag(['密码错误']));
+                    -> withErrors('密码错误');
             }
 
             session() -> put("user",$user);
@@ -60,5 +60,18 @@ class LoginController extends Controller
         }else{
             return view('admin.login');
         }
+    }
+
+    public function index(){
+        return view('admin.index');
+    }
+
+    public function welcome(){
+        return view('admin.welcome');
+    }
+
+    public function logout(){
+        session()->flush();
+        return redirect('admin/login');
     }
 }
